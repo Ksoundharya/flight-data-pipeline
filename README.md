@@ -50,7 +50,19 @@ The seeded run produced the following outcomes:
 - Passenger balance sums to exactly 0.0 across all cities
 - Traffic concentration remains low and consistent with the expected random distribution
 
+This combination of scale, data quality, and reproducibility shows the pipeline is working as intended.
+
 The full methodology, engineering decisions, and final analysis are documented in [FINAL_REPORT.md](FINAL_REPORT.md).
+
+## Impact
+
+This project demonstrates a strong data-engineering workflow for synthetic data creation and validation:
+
+- reliable generation at scale
+- efficient streaming analysis
+- disciplined data-quality checks
+- statistically grounded output reporting
+- reproducible experimentation through seeded configuration
 
 ## Project structure
 

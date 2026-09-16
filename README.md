@@ -1,30 +1,31 @@
 # Flight Data Pipeline
 
-This project builds a realistic synthetic airline traffic dataset, processes it in a memory-safe streaming pipeline, and validates the output with a full analytics and testing workflow.
+A Python project that generates large-scale synthetic flight data, processes it in a streaming pipeline, and verifies the results with a strong validation and analytics workflow.
 
-The goal was to create a reliable data-generation system that could handle a large number of flight records without loading everything into memory, while also making sure the generated data remained valid, traceable, and statistically sound.
+This project was designed to solve a real engineering problem: building a dataset that was large enough to feel realistic, but careful enough to remain clean, deterministic, and trustworthy. Instead of loading everything into memory, the pipeline streams through files and computes summary metrics efficiently while keeping the data quality checks strict.
 
-## What this project achieved
+## What I built
 
-- Generated 5,000 synthetic JSON flight files across a city pool of 100–200 destinations
-- Built a streaming analysis pipeline that processed the data efficiently without holding the full dataset in memory
-- Separated dirty data from invalid data so the analytics stayed accurate and trustworthy
-- Verified passenger conservation, traffic concentration, and duration statistics against real checks
-- Produces a structured output report with final analytics and validation results
-- Included a test suite covering generation logic, record validation, deterministic behavior, and edge-case handling
+- Synthetic flight-data generation across a large city pool
+- Streaming analysis for large-scale data processing
+- Validation of record integrity and dirty vs invalid data handling
+- Passenger-balance and traffic-concentration checks
+- Reproducible seeded output for consistent testing and reporting
+- A full automated test suite to verify correctness
 
-## Why it matters
+## Why this project is useful
 
-This was not just a data-generation exercise. The real value was in the engineering discipline behind it:
+The value here is not only in generating data, but in how the pipeline is engineered:
 
-- making sure file generation did not overwrite unrelated records
-- handling malformed and invalid input without breaking the pipeline
-- keeping generation deterministic for reproducible results
-- validating every key invariant programmatically instead of relying on assumptions
+- filenames are handled safely to avoid collisions
+- malformed files are isolated instead of crashing the pipeline
+- invalid records are separated from dirty records for accurate analysis
+- summary metrics are validated with exact checks rather than rough approximations
+- the system remains reproducible from a fixed seed
 
-## Results summary
+## Results achieved
 
-Using the seeded run, the project produced:
+The seeded run produced the following outcomes:
 
 - 5,000 generated files
 - 376,624 total records
@@ -33,21 +34,21 @@ Using the seeded run, the project produced:
 - 0 malformed files
 - Top destination: Columbus GA with 946,697 arriving passengers
 - Passenger balance sums to exactly 0.0 across all cities
-- Traffic concentration remains low and consistent with the expected random destination distribution
+- Traffic concentration remains low and consistent with the expected random distribution
 
-The full results, methodology, and engineering notes are documented in [FINAL_REPORT.md](FINAL_REPORT.md).
+The full engineering notes, validation details, and final analysis can be found in [FINAL_REPORT.md](FINAL_REPORT.md).
 
 ## Project structure
 
-- `generate_flights.py` — creates the synthetic flight files
-- `analyze_flights.py` — reads and processes the generated data stream
-- `models.py` — validation and record-level checks
-- `statistics.py` — percentile, confidence interval, and concentration calculations
-- `config.py` — central configuration values
-- `tests/` — validation and regression tests
-- `outputs/analysis_report.json` — generated analytics output
+- `generate_flights.py` — generates the synthetic flight records
+- `analyze_flights.py` — processes the generated data stream
+- `models.py` — record validation and data-quality checks
+- `statistics.py` — percentiles, confidence intervals, and concentration metrics
+- `config.py` — central configuration and constants
+- `tests/` — automated checks and regression tests
+- `outputs/analysis_report.json` — generated output report
 
-## How to run it
+## How to run
 
 ```bash
 python generate_flights.py
@@ -55,18 +56,18 @@ python analyze_flights.py
 pytest tests/ -q
 ```
 
-The scripts are designed to run with default settings, and the configuration is centralized in `config.py`.
+The project is set up to run with default configuration values, and the logic stays centralized in `config.py`.
 
-## Validation
+## Validation summary
 
-The project includes a passing test suite with 29 checks covering:
+The project includes 29 passing tests covering:
 
 - schema validation
 - dirty and invalid record handling
 - filename uniqueness and collision prevention
-- reproducibility across seeded runs
-- percentile and Wilson interval calculations
-- passenger balance and HHI validation
+- deterministic generation across seeded runs
+- percentile and Wilson confidence interval checks
+- passenger-balance and HHI validation
 - malformed-file quarantine behavior
 
-This project is fully public and ready to explore.
+This is a clean, reproducible, and public-ready data engineering project.

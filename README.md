@@ -1,83 +1,72 @@
-# Task 2 — Flight Data Generation, Cleaning, and Analytics
+# Flight Data Pipeline
 
-Generates ~5,000 synthetic flight-record JSON files across a pool of
-100-200 cities, then streams through them (never loading the full corpus
-into memory) to produce cleaned analytics: Top-25 destinations by arriving
-passengers, per-destination duration percentiles, a passenger-balance
-conservation check, dirty/invalid record quarantine with a Wilson
-confidence interval on the dirty rate, and a traffic-concentration (HHI)
-summary.
+This project builds a realistic synthetic airline traffic dataset, processes it in a memory-safe streaming pipeline, and validates the output with a full analytics and testing workflow.
 
-For the full engineering reasoning — the filename-collision analysis, the
-dirty-vs-invalid quarantine rationale, the streaming/complexity analysis,
-every number from the actual generated run, the validation-suite results,
-and the requirement traceability matrix — see **`FINAL_REPORT.md`**. This
-file is just the short entry point.
+The goal was to create a reliable data-generation system that could handle a large number of flight records without loading everything into memory, while also making sure the generated data remained valid, traceable, and statistically sound.
 
-## Key advanced work
+## What this project achieved
 
-* **Filename-collision fix, not a workaround**: the spec's literal path
-  template only has ≤200 distinct values per run, which pigeonholes into
-  guaranteed overwrites at 5,000 files. Resolved with a documented
-  per-(month-year, city) sequence number and one subdirectory per city,
-  preserving every required path component while making collisions
-  impossible. See `generate_flights.py`'s module docstring and
-  `FINAL_REPORT.md` for the full write-up.
-* **Streaming, single-pass analysis**: `analyze_flights.py` never holds
-  more than one file's records in memory; only the one metric that can't
-  be computed exactly without raw values (P95 duration) retains a
-  per-city list, everything else is an O(#cities) running aggregate.
-* **Dirty vs. invalid, quarantined separately**: null/missing required
-  fields ("dirty") and non-null-but-impossible values ("invalid", e.g.
-  same origin/destination) are excluded from analytics and reported
-  separately, rather than imputed or silently merged — imputing would
-  distort the exact conservation and ranking checks below.
-* **Exactly-verified invariants**: global passenger balance sums to
-  `0.0` exactly (not "close to zero"), checked programmatically by
-  `run_validation_suite`, not just asserted by inspection.
-* **Deterministic generation**: seeded `random.Random` instances (no
-  shared global state) give byte-for-byte reproducible runs.
-* **29 passing tests** covering schema/bounds validation, dirty-rate
-  behavior at the p=0/p=1 edges, filename uniqueness, deterministic-seed
-  reproducibility, percentile/Wilson-CI/HHI correctness against
-  hand-computed cases, and malformed-file isolation.
+- Generated 5,000 synthetic JSON flight files across a city pool of 100–200 destinations
+- Built a streaming analysis pipeline that processed the data efficiently without holding the full dataset in memory
+- Separated dirty data from invalid data so the analytics stayed accurate and trustworthy
+- Verified passenger conservation, traffic concentration, and duration statistics against real checks
+- Produces a structured output report with final analytics and validation results
+- Included a test suite covering generation logic, record validation, deterministic behavior, and edge-case handling
 
-## Results snapshot (seed=42, actual run)
+## Why it matters
 
-```
-Files generated     : 5,000        Total records    : 376,624
-Dirty records       : 2,089 (0.5547%, 95% CI [0.5314%, 0.5789%])
-Clean valid records : 374,535      Malformed files  : 0
-Top destination     : Columbus GA (946,697 arriving passengers)
-Passenger balance   : sums to 0.0 exactly across all 181 cities
-Traffic HHI         : 55.3 / 10,000 (essentially unconcentrated, as
-                       expected from a uniform-random destination draw)
-```
+This was not just a data-generation exercise. The real value was in the engineering discipline behind it:
 
-Full tables and every other number are in `FINAL_REPORT.md` and
-`outputs/analysis_report.json`.
+- making sure file generation did not overwrite unrelated records
+- handling malformed and invalid input without breaking the pipeline
+- keeping generation deterministic for reproducible results
+- validating every key invariant programmatically instead of relying on assumptions
 
-## Setup and reproduction
+## Results summary
 
-Only the Python 3.7+ standard library is used at runtime — no third-party
-dependency (`pytest` is dev/test-only).
+Using the seeded run, the project produced:
+
+- 5,000 generated files
+- 376,624 total records
+- 2,089 dirty records
+- 374,535 clean valid records
+- 0 malformed files
+- Top destination: Columbus GA with 946,697 arriving passengers
+- Passenger balance sums to exactly 0.0 across all cities
+- Traffic concentration remains low and consistent with the expected random destination distribution
+
+The full results, methodology, and engineering notes are documented in [FINAL_REPORT.md](FINAL_REPORT.md).
+
+## Project structure
+
+- `generate_flights.py` — creates the synthetic flight files
+- `analyze_flights.py` — reads and processes the generated data stream
+- `models.py` — validation and record-level checks
+- `statistics.py` — percentile, confidence interval, and concentration calculations
+- `config.py` — central configuration values
+- `tests/` — validation and regression tests
+- `outputs/analysis_report.json` — generated analytics output
+
+## How to run it
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate   # optional
-pip install pytest                                    # only needed for tests
-
-python3 generate_flights.py \
-    --output-dir /tmp/flights \
-    --num-files 5000 \
-    --seed 42
-
-python3 analyze_flights.py \
-    --input-dir /tmp/flights \
-    --output-report outputs/analysis_report.json
-
-pytest tests/ -v
+python generate_flights.py
+python analyze_flights.py
+pytest tests/ -q
 ```
 
-Both scripts default to these values, so `python3 generate_flights.py`
-and `python3 analyze_flights.py` alone reproduce the run above.
-`config.py` centralizes every tunable constant.
+The scripts are designed to run with default settings, and the configuration is centralized in `config.py`.
+
+## Validation
+
+The project includes a passing test suite with 29 checks covering:
+
+- schema validation
+- dirty and invalid record handling
+- filename uniqueness and collision prevention
+- reproducibility across seeded runs
+- percentile and Wilson interval calculations
+- passenger balance and HHI validation
+- malformed-file quarantine behavior
+
+This project is fully public and ready to explore.

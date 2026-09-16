@@ -1,0 +1,12 @@
+# Task 2 ONLY (flight data generation + streaming analysis).
+#
+# Task 2 is intentionally implemented using ONLY the Python 3.7+ standard
+# library (json, pathlib, argparse, logging, collections, time, random,
+# datetime, math) to satisfy the assignment's explicit "Python 3.7+"
+# requirement without depending on a specific modern interpreter or
+# third-party package versions. generate_flights.py and analyze_flights.py
+# have zero runtime dependencies.
+#
+# pytest is a DEV/TEST-ONLY dependency, needed only to run `pytest tests/`;
+# it is not imported by generate_flights.py or analyze_flights.py.
+pytest==9.1.1

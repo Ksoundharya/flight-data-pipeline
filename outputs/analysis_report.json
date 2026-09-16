@@ -1,0 +1,311 @@
+{
+  "runtime_ms": 1428.806379999969,
+  "files_found": 5000,
+  "files_processed": 5000,
+  "malformed_files": 0,
+  "malformed_file_paths": [],
+  "records_processed": 376624,
+  "dirty_records": 2089,
+  "dirty_field_counts": {
+    "origin_city": 491,
+    "flight_duration_secs": 566,
+    "destination_city": 500,
+    "#_of_passengers_on_board": 534,
+    "date": 510
+  },
+  "invalid_not_dirty_records": 0,
+  "invalid_reason_counts": {},
+  "unexpected_field_records": 0,
+  "clean_valid_records": 374535,
+  "top_25_destinations_by_arriving_passengers": [
+    {
+      "rank": 1,
+      "destination": "Columbus GA",
+      "arriving_passengers": 946697.0,
+      "valid_flights": 2184,
+      "avg_flight_duration_secs": 37079.42307692308,
+      "p95_flight_duration_secs": 68852.84999999999
+    },
+    {
+      "rank": 2,
+      "destination": "San Jose",
+      "arriving_passengers": 930887.0,
+      "valid_flights": 2203,
+      "avg_flight_duration_secs": 36749.08125283704,
+      "p95_flight_duration_secs": 68272.40000000001
+    },
+    {
+      "rank": 3,
+      "destination": "Henderson",
+      "arriving_passengers": 926954.0,
+      "valid_flights": 2227,
+      "avg_flight_duration_secs": 36076.59901212393,
+      "p95_flight_duration_secs": 67797.3
+    },
+    {
+      "rank": 4,
+      "destination": "Oxnard",
+      "arriving_passengers": 923107.0,
+      "valid_flights": 2180,
+      "avg_flight_duration_secs": 37357.79174311927,
+      "p95_flight_duration_secs": 68613.34999999998
+    },
+    {
+      "rank": 5,
+      "destination": "Gilbert",
+      "arriving_passengers": 923065.0,
+      "valid_flights": 2145,
+      "avg_flight_duration_secs": 36754.27226107226,
+      "p95_flight_duration_secs": 68665.6
+    },
+    {
+      "rank": 6,
+      "destination": "Newark",
+      "arriving_passengers": 918909.0,
+      "valid_flights": 2129,
+      "avg_flight_duration_secs": 36258.12494128699,
+      "p95_flight_duration_secs": 68205.59999999999
+    },
+    {
+      "rank": 7,
+      "destination": "Baltimore",
+      "arriving_passengers": 918845.0,
+      "valid_flights": 2146,
+      "avg_flight_duration_secs": 35884.56756756757,
+      "p95_flight_duration_secs": 67960.5
+    },
+    {
+      "rank": 8,
+      "destination": "Scottsdale",
+      "arriving_passengers": 917580.0,
+      "valid_flights": 2119,
+      "avg_flight_duration_secs": 37109.34025483719,
+      "p95_flight_duration_secs": 68756.9
+    },
+    {
+      "rank": 9,
+      "destination": "Dallas",
+      "arriving_passengers": 915119.0,
+      "valid_flights": 2110,
+      "avg_flight_duration_secs": 36156.01421800948,
+      "p95_flight_duration_secs": 68174.0
+    },
+    {
+      "rank": 10,
+      "destination": "Amarillo",
+      "arriving_passengers": 912612.0,
+      "valid_flights": 2110,
+      "avg_flight_duration_secs": 36456.672511848345,
+      "p95_flight_duration_secs": 68529.15
+    },
+    {
+      "rank": 11,
+      "destination": "Fremont",
+      "arriving_passengers": 911537.0,
+      "valid_flights": 2124,
+      "avg_flight_duration_secs": 36188.77118644068,
+      "p95_flight_duration_secs": 68377.95
+    },
+    {
+      "rank": 12,
+      "destination": "Richmond",
+      "arriving_passengers": 910435.0,
+      "valid_flights": 2154,
+      "avg_flight_duration_secs": 36228.537604456826,
+      "p95_flight_duration_secs": 68345.45
+    },
+    {
+      "rank": 13,
+      "destination": "Washington",
+      "arriving_passengers": 910096.0,
+      "valid_flights": 2128,
+      "avg_flight_duration_secs": 36802.313439849626,
+      "p95_flight_duration_secs": 68691.79999999999
+    },
+    {
+      "rank": 14,
+      "destination": "Joliet",
+      "arriving_passengers": 910089.0,
+      "valid_flights": 2131,
+      "avg_flight_duration_secs": 37122.113561708116,
+      "p95_flight_duration_secs": 69025.5
+    },
+    {
+      "rank": 15,
+      "destination": "Bridgeport",
+      "arriving_passengers": 909224.0,
+      "valid_flights": 2125,
+      "avg_flight_duration_secs": 36843.36423529412,
+      "p95_flight_duration_secs": 68345.4
+    },
+    {
+      "rank": 16,
+      "destination": "Paterson",
+      "arriving_passengers": 908153.0,
+      "valid_flights": 2126,
+      "avg_flight_duration_secs": 36431.2822201317,
+      "p95_flight_duration_secs": 68508.5
+    },
+    {
+      "rank": 17,
+      "destination": "Chattanooga",
+      "arriving_passengers": 908061.0,
+      "valid_flights": 2123,
+      "avg_flight_duration_secs": 36637.4342910975,
+      "p95_flight_duration_secs": 68113.3
+    },
+    {
+      "rank": 18,
+      "destination": "Worcester",
+      "arriving_passengers": 907911.0,
+      "valid_flights": 2106,
+      "avg_flight_duration_secs": 36590.26970560304,
+      "p95_flight_duration_secs": 68222.5
+    },
+    {
+      "rank": 19,
+      "destination": "Eugene",
+      "arriving_passengers": 906904.0,
+      "valid_flights": 2154,
+      "avg_flight_duration_secs": 36536.677808727945,
+      "p95_flight_duration_secs": 68550.4
+    },
+    {
+      "rank": 20,
+      "destination": "Montgomery",
+      "arriving_passengers": 906558.0,
+      "valid_flights": 2088,
+      "avg_flight_duration_secs": 36167.83045977011,
+      "p95_flight_duration_secs": 68573.94999999998
+    },
+    {
+      "rank": 21,
+      "destination": "Sioux Falls",
+      "arriving_passengers": 906470.0,
+      "valid_flights": 2109,
+      "avg_flight_duration_secs": 36028.79137031769,
+      "p95_flight_duration_secs": 68423.8
+    },
+    {
+      "rank": 22,
+      "destination": "Lakewood",
+      "arriving_passengers": 904962.0,
+      "valid_flights": 2172,
+      "avg_flight_duration_secs": 36004.920349907916,
+      "p95_flight_duration_secs": 68092.4
+    },
+    {
+      "rank": 23,
+      "destination": "Lubbock",
+      "arriving_passengers": 904867.0,
+      "valid_flights": 2109,
+      "avg_flight_duration_secs": 35846.95400663822,
+      "p95_flight_duration_secs": 68194.4
+    },
+    {
+      "rank": 24,
+      "destination": "Salem",
+      "arriving_passengers": 904675.0,
+      "valid_flights": 2146,
+      "avg_flight_duration_secs": 37559.36067101584,
+      "p95_flight_duration_secs": 68676.0
+    },
+    {
+      "rank": 25,
+      "destination": "Stockton",
+      "arriving_passengers": 904519.0,
+      "valid_flights": 2156,
+      "avg_flight_duration_secs": 36723.28756957329,
+      "p95_flight_duration_secs": 68421.25
+    }
+  ],
+  "passenger_balance_extremes": {
+    "max_balance_city": {
+      "city": "Columbus GA",
+      "balance": 144609.0
+    },
+    "min_balance_city": {
+      "city": "Wichita",
+      "balance": -139144.0
+    },
+    "conservation_check_sum_of_all_balances": 0.0,
+    "conservation_invariant_holds": true,
+    "n_cities": 181
+  },
+  "traffic_concentration": {
+    "destination_top10_share_of_passengers": 0.0580874748104548,
+    "destination_top25_share_of_passengers": 0.14373279976102152,
+    "destination_hhi_0_to_10000": 55.28326631823763,
+    "hhi_interpretation": "HHI < 1500: unconcentrated; 1500-2500: moderately concentrated; >2500: highly concentrated (US DOJ/FTC convention, applied here descriptively, not as an antitrust judgment)",
+    "origin_top10_share_of_departing_flights": 0.059855554220566834
+  },
+  "extended_statistics": {
+    "flight_duration_distribution": {
+      "n": 374535,
+      "mean": 36584.7792542753,
+      "median": 36585.0,
+      "stdev": 20440.43811438648,
+      "variance": 417811510.30806357,
+      "min": 1200.0,
+      "max": 72000.0,
+      "p5": 4811.0,
+      "p25": 18852.0,
+      "p50": 36585.0,
+      "p75": 54304.0,
+      "p95": 68495.0,
+      "p99": 71300.0,
+      "iqr": 35452.0,
+      "skewness": 0.0036771677887788142,
+      "coefficient_of_variation": 0.5587142667260404
+    },
+    "passenger_distribution": {
+      "n": 374535,
+      "mean": 424.4283471504666,
+      "median": 424.0,
+      "stdev": 245.52057677578586,
+      "variance": 60280.353620314556,
+      "min": 0.0,
+      "max": 850.0,
+      "p5": 42.0,
+      "p25": 212.0,
+      "p50": 424.0,
+      "p75": 637.0,
+      "p95": 807.0,
+      "p99": 842.0,
+      "iqr": 425.0,
+      "skewness": 0.0010691443832053203,
+      "coefficient_of_variation": 0.5784735596106282
+    },
+    "dirty_records": {
+      "observed_count": 2089,
+      "total_records": 376624,
+      "observed_proportion": 0.005546645991758359,
+      "wilson_95_ci": [
+        0.00531443983547036,
+        0.005788938986006549
+      ]
+    }
+  },
+  "validation_suite": {
+    "approx_5000_files_generated": true,
+    "city_pool_in_100_200": true,
+    "dirty_prob_in_spec_range": true,
+    "no_malformed_files": true,
+    "no_unexpected_fields": true,
+    "balance_conservation_holds": true,
+    "observed_dirty_fraction_within_2x_of_configured": true,
+    "all_checks_passed": true
+  },
+  "generation_manifest": {
+    "num_files": 5000,
+    "k_cities": 181,
+    "configured_dirty_probability": 0.005556655340828402,
+    "total_records": 376624,
+    "total_dirty_records": 2089,
+    "actual_dirty_fraction": 0.005546645991758359,
+    "month_year_tag": "09-26",
+    "output_dir": "/tmp/flights/09-26",
+    "seed": 42,
+    "generation_runtime_sec": 2.712894993999953
+  }
+}
